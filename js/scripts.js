@@ -7,24 +7,22 @@ $(document).ready(function () {
       return;
     }
 
-    let listItem = $('<li></li>').text(newItemText);
-    let deleteButton = $('<button class="delete">X</button>');
-
-    listItem.append(deleteButton);
-    $("#list").append(listItem);
-
-    listItem.on("dblclick", function () {   // event listener for double-click to cross out an item
-      $(this).toggleClass("strike");
-    });
-
-    deleteButton.on("click", function () {   // event listener for delete button
-      listItem.remove();
-    });
-
+    let newItemHTML = '<li>' + newItemText + '<button class="delete">X</button></li>';
+    $('.selectedElement').append(newItemHTML);
     $("#input").val('');   // clear input field
+    attachEventListeners();   // move event listeners to a separate function
   }
 
-  $('#button').on("click", addItem); // Attach the click event to the "Add" div
+  function attachEventListeners() {
+    $(".selectedElement li:last-child").on("click", ".delete", function () {   // event listener for delete button
+      $(this).parent().remove();
+    });
 
-  $('#list').sortable();   // change the order of items
+    $(".selectedElement li:last-child").on("dblclick", function () {   // event listener for double-click to cross out an item
+      $(this).toggleClass("strike", !$(this).hasClass("strike"));
+    });
+  }
+
+  $('#button').on("click", addItem);   // attach the click event to the "Add" div
+  $('.selectedElement').sortable();   // change the order of items
 });
