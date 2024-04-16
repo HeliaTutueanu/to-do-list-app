@@ -20,8 +20,8 @@ The ToDo List app is designed to simplify task management and improve productivi
 ## Technologies Used
 
 - HTML5
-- CSS3 (including CSS frameworks like Bootstrap or Tailwind CSS)
-- JavaScript (including libraries or frameworks like React.js or Vue.js)
+- CSS3
+- JavaScript
 
 ## Installation
 
